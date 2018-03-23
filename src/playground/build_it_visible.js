@@ -4,31 +4,24 @@ const app = {
     show: false
 }
 
-const showDetail = () => {
-    if (app.show === false){
-        app.show = true;
-        console.log("Should be true")
+const toggleDetail = () => {
+        app.show = !app.show;
         render();
-    }
-    else{
-        app.show = false;
-        render();
-    }
 }
-
-const appRoot = document.getElementById('app');
 
 const render = () => {
     
     const template = (
         <div>
             <h1>{app.title}</h1>
-            <button onClick={showDetail}>Show Details</button>
-            {(app.show === true) && <p> {app.message} </p>}
+            <button onClick={toggleDetail}>{app.show ? 'Hide Details' : 'Show Details'}</button>
+            {app.show && (
+                <div>{app.message}</div>
+            )}
         </div>
     );
 
-    ReactDOM.render(template, appRoot);
+    ReactDOM.render(template, document.getElementById('app'));
 }
 
 render();

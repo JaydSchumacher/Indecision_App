@@ -6,18 +6,10 @@ var app = {
     show: false
 };
 
-var showDetail = function showDetail() {
-    if (app.show === false) {
-        app.show = true;
-        console.log("Should be true");
-        render();
-    } else {
-        app.show = false;
-        render();
-    }
+var toggleDetail = function toggleDetail() {
+    app.show = !app.show;
+    render();
 };
-
-var appRoot = document.getElementById('app');
 
 var render = function render() {
 
@@ -31,19 +23,17 @@ var render = function render() {
         ),
         React.createElement(
             'button',
-            { onClick: showDetail },
-            'Show Details'
+            { onClick: toggleDetail },
+            app.show ? 'Hide Details' : 'Show Details'
         ),
-        app.show === true && React.createElement(
-            'p',
+        app.show && React.createElement(
+            'div',
             null,
-            ' ',
-            app.message,
-            ' '
+            app.message
         )
     );
 
-    ReactDOM.render(template, appRoot);
+    ReactDOM.render(template, document.getElementById('app'));
 };
 
 render();
