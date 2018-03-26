@@ -113,9 +113,7 @@ var Options = function (_React$Component4) {
 
     _createClass(Options, [{
         key: 'handleRemoveAll',
-        value: function handleRemoveAll() {
-            alert('handleRemoveAll');
-        }
+        value: function handleRemoveAll() {}
     }, {
         key: 'render',
         value: function render() {
@@ -173,7 +171,21 @@ var AddOption = function (_React$Component6) {
     _createClass(AddOption, [{
         key: 'render',
         value: function render() {
-            return React.createElement('div', null);
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'form',
+                    { onSubmit: onFormSubmit },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add Option'
+                    )
+                ),
+                '\xDF'
+            );
         }
     }]);
 

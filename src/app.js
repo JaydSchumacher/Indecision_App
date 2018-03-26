@@ -41,7 +41,7 @@ class Action extends React.Component {
 
 class Options extends React.Component {
     handleRemoveAll() {
-        alert('handleRemoveAll')
+        
     }
     render() {
         return (
@@ -69,7 +69,10 @@ class AddOption extends React.Component {
     render() {
         return (
             <div>
-                
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+            </form>ß
             </div>
         )
     }
