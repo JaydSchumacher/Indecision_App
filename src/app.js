@@ -1,6 +1,6 @@
-class IndecsionApp extends React.Component {
+class IndecisionApp extends React.Component {
     render() {
-        const title = 'Indecsion';
+        const title = 'Indecision';
         const subtitle = 'Put your life in the hands of a computer';
         const options = [342, 2432, 2434];
 
@@ -28,7 +28,7 @@ class Header extends React.Component {
 
 class Action extends React.Component {
     handlePick() {
-        alert('handlePick')
+        alert('handlePick');
     }
     render() {
         return (
@@ -40,8 +40,12 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
     handleRemoveAll() {
-        
+        console.log(this.props.options)
     }
     render() {
         return (
@@ -66,13 +70,23 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+
+        if (option){
+            e.target.elements.option.value = '';
+            alert(option);
+        }
+        
+    }
     render() {
         return (
             <div>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="option"/>
-                <button>Add Option</button>
-            </form>ß
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="option"/>
+                    <button>Add Option</button>
+                </form>
             </div>
         )
     }
@@ -81,4 +95,4 @@ class AddOption extends React.Component {
 
         
 
-ReactDOM.render(<IndecsionApp />, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
