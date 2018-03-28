@@ -17,7 +17,7 @@ var IndecisionApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this.state = {
-            options: [342, 2432, 2434]
+            options: [342, 2432, 'Hello']
         };
         return _this;
     }
@@ -32,7 +32,7 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, { title: title, subtitle: subtitle }),
-                React.createElement(Action, null),
+                React.createElement(Action, { hasOptions: this.state.options.length > 0 }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(AddOption, null)
             );
@@ -96,8 +96,11 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    { onClick: this.handlePick },
-                    ' What should I do '
+                    {
+                        onClick: this.handlePick,
+                        disabled: !this.hasOptions
+                    },
+                    'What should I do'
                 )
             );
         }
