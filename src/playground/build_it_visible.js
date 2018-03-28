@@ -11,16 +11,9 @@ class Visibility extends React.Component {
 
     toggleDetail() {
         this.setState((prevState) => {
-            if(prevState.show === true){
-                return {
-                    show: false               
-                }
-            }
-            else{
-                return {
-                    show: true
-                }
-            }
+            return {
+                show: !prevState.show             
+            };
             
         });        
     }
